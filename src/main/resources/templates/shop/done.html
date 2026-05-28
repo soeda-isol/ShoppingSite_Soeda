@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>購入完了画面</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<meta charset="UTF-8">
+</head>
+
+<body>
+	<div>[[${userData.userName}]]さん、ようこそ。</div>
+	<div><a th:href="@{/shop/menu}">メニューへ</a></div><br>
+	<div><a th:href="@{/shop/itemList}">商品一覧へ</a></div><br>
+	<div><a th:href="@{/shop/history}">購入履歴へ</a></div><br>
+	<div>購入が完了しました</div><br>
+	<table>
+		<tr>
+			<th>購入完了日時</th>
+			<th>購入NO</th>
+			<th>購入金額</th>
+		</tr>
+		<tr>
+			<td><span th:text="${time}"></span></td>
+			<td><span th:text="${itemNo}"></span></td>
+			<td><span th:text="${sum}"></span></td>
+		</tr>
+
+	</table>
+	<div>【購入内容】</div><br>
+	<div>(商品１)</div><br>
+
+	<table>
+		<tr>
+			<th>購入名</th>
+			<th>価格</th>
+			<th>購入個数</th>
+		</tr>
+		<tr>
+			<td><span th:text="${itemName}"></span></td>
+			<td><span th:text="${price}"></span></td>
+			<td><span th:text="${num}"></span></td>
+		</tr>
+	</table>
+	<form th:action="@{/shop/done}" th:object="${inputRequest}" th:method="POST">
+			<div><input type="hidden" name="num" th:value="${num}">
+				<input type="hidden" name="itemId" th:value="${itemId}">
+				<input type="submit" value="購入履歴">
+			</div>
+			<div><a th:href="@{/shop/menu}">メニューに戻る</a></div>
+		</form>
+</body>
+
+</html>

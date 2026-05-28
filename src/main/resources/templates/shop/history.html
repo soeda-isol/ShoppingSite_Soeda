@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>購入履歴画面</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<meta charset="UTF-8">
+</head>
+
+<body>
+	<div>[[${userData.userName}]]さん、ようこそ。</div>
+	<div><a th:href="@{/shop/menu}">メニューへ</a></div><br>
+	<div><a th:href="@{/shop/itemList}">商品一覧へ</a></div>
+	<br><br>
+
+	<table>
+		<tr>
+			<th>商品ID</th>
+			<th>購入日</th>
+			<th>商品名</th>
+			<th>個数</th>
+			<th>金額</th>
+		</tr>
+		<tr th:each="historyList:${historyList}">
+			<td th:text="${historyList.itemId}"></td>
+			<td th:text="${historyList.purchaseDate}"></td>
+			<td th:text="${historyList.itemName}"></td>
+			<td th:text="${historyList.num}"></td>
+			<td th:text="${historyList.sum}"></td>
+		</tr>
+
+	</table>
+</body>
+
+</html>

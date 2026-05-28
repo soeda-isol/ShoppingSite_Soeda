@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>メニュー画面</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<meta charset="utf-8" />
+</head>
+
+<body>
+	<div>[[${userData.userName}]]さん、ようこそ。<br></div>
+	<hr align=center color=black>
+	<br><br>
+	<div><a th:href="@{/shop/itemList}">商品一覧へ</a></div>
+	<br>
+	<div><a th:href="@{/shop/history}">購入履歴へ</a></div>
+	<br>
+	<br>
+	<div><a th:href="@{/shop/login}">ログアウト</a></div>
+
+</body>
+
+</html>

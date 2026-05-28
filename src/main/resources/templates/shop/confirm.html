@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>確認画面</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<meta charset="UTF-8">
+</head>
+
+<body>
+	<div>[[${userData.userName}]]さん、ようこそ。</div>
+	<div>購入内容を確認してください</div>
+	<table>
+		<tr>
+			<th>ジャンル</th>
+			<th>商品名</th>
+			<th>価格</th>
+		</tr>
+		<tr>
+			<td><span th:text="${genre}"></span></td>
+			<td><span th:text="${itemName}"></span></td>
+			<td><span th:text="${price}"></span></td>
+		</tr>
+
+	</table>
+	<div>合計金額</div>
+	<div><span th:text="${sum}"></span></div><br>
+	<form th:action="@{/shop/confirm}" th:object="${inputRequest}" th:method="POST">
+		<div><input type="hidden" name="num" th:value="${num}">
+			<input type="hidden" name="itemId" th:value="${itemId}">
+			<input type="hidden" name="sum" value="${sum}">
+			<input type="submit" value="購入">
+		</div>
+		<div><a th:href="@{/shop/input}">商品画面に戻る</a></div>
+	</form>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>商品一覧画面</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<meta charset="UTF-8">
+</head>
+
+<body>
+	<div>[[${userData.userName}]]さん、ようこそ。</div>
+	<a th:href="@{/shop/menu}">メニューへ</a><br>
+	<div><a th:href="@{/shop/history}">購入履歴へ</a></div>
+	<br><br>
+	<br>
+	<table>
+		<tr>
+			<th>ジャンル</th>
+			<th>商品名</th>
+			<th>価格</th>
+		</tr>
+		<tr th:each="item:${itemData}">
+			<td th:text="${item.genre}"></td>
+			<td><a th:href="@{/shop/input(itemId=${item.itemId})}" th:text="${item.itemName}">
+				</a></td>
+			<td th:text="${item.price}"></td>
+		</tr>
+	</table>
+
+
+	<a>希望の商品を選んでください</a>
+
+	<div th:if="${message}"></div>
+	<div>
+		<font color=red>[[${message}]]</font>
+	</div>
+
+
+</body>
+
+</html>
